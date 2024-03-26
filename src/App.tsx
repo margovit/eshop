@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import { Container } from "react-bootstrap"
+import '@mantine/core/styles.css';
 import { Store } from "./pages/Store"
 import { About } from "./pages/About"
 import { Home } from "./pages/Home"
