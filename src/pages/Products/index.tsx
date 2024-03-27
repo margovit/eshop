@@ -46,6 +46,7 @@ export function Products() {
 
 export function ProductCard(product: ProductDto) {
     return (
+        
         <Card withBorder padding="lg" className={classes.card}>
             <Image src={product.image} alt={product.title} height={100} />
             <Card.Section>
