@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { Products } from "./pages/Products";
 import { AppShell } from "@mantine/core";
 import { About } from "./pages/About";
 import { Cart } from "./pages/Cart";
+import { Products } from "./pages/Products";
 
 
  export default function App(){
