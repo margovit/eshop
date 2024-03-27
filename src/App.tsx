@@ -1,30 +1,20 @@
-import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { Products } from "./pages/Products";
-import NotFoundPage from "./pages/NotFoundPage";
+import { AppShell } from "@mantine/core";
+import { About } from "./pages/About";
+import { Cart } from "./pages/Cart";
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: < HomePage />,
-    errorElement : <NotFoundPage />,
-  },
-  {
-    path:"/products",
-    element: < Products />,
-    
-  }
-])
-
-function App() {
+ export default function App(){
   return (
-    <>
-    <React.StrictMode>
-      <RouterProvider router={router}/>
-    </React.StrictMode>
-  </>
+    <AppShell>
+      <Routes>
+        <Route path="/" element={<HomePage />}/>
+        <Route path="/products" element={<Products />}/>
+        <Route path="/about" element={<About />}/>
+        <Route path="/cart" element={<Cart />}/>
+      </Routes>
+    </AppShell>
   )
  }
- export default App;
