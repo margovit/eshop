@@ -4,6 +4,7 @@ import App from './App.tsx'
 import { BrowserRouter } from "react-router-dom"
 import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import "./input.css"
 
 
 const queryClient = new QueryClient()

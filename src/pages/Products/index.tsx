@@ -1,6 +1,6 @@
-import { Card, Image, Text, Group } from '@mantine/core';
+import { Card, Image, Text, Group, Button } from '@mantine/core';
 import { useQuery } from "@tanstack/react-query";
-import classes from './Products.module.css'
+
 
 
 interface ProductDto {
@@ -30,53 +30,57 @@ export function Products() {
 
     return (
         <div className="products">
-            {data.map((product: ProductDto) => (
-                <div key={product.id} className="product-card">
-                    <img src={product.image} alt={product.title} />
-                    <div className="product-info">
-                        <h3>{product.title}</h3>
-                        <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
-                    </div>
-                </div>
+            {data && data.map((product: ProductDto) => (
+                <ProductCard key={product.id} item={product} />
             ))}
         </div>
     )
 }
 
-export function ProductCard(product: ProductDto) {
+export function ProductCard({ item }: { item: ProductDto }) {
     return (
-        
-        <Card withBorder padding="lg" className={classes.card}>
-            <Image src={product.image} alt={product.title} height={100} />
-            <Card.Section>
-                <Group justify="space-between" mt="xl">
-                    <Text fz="sm" fw={700} className={classes.title}>
-                        {product.title}
-                    </Text>
-                    <Group gap={5}>
-                        <Text fz="xs" c="dimmed">
-                            {product.description}
+        <div className="flex flex-wrap justify">
+            <Card className="bg-dimmed w-64 h-64" shadow="sm" padding="lg" radius="md" withBorder>
+                    <Card.Section withBorder inheritPadding py="xs">
+                    <Image className="w-20 h-20" src={item.image} alt={item.title} />
+                        <Group justify="space-between" >
+                            <Text fz="sm" fw={500}>
+                                {item.title}
+                            </Text>
+                            <Group gap={5}>
+                                <Text fz="xs" c="dimmed">
+                                    {item.description}
+                                </Text>
+                            </Group>
+                        </Group>
+                        <Text mt="sm" mb="md" c="dimmed" fz="xs">
+                            {item.category}
                         </Text>
-                    </Group>
-                </Group>
-                <Text mt="sm" mb="md" c="dimmed" fz="xs">
-                    {product.category}
-                </Text>
-                <Card.Section className={classes.footer}>
-                    <Text size="xs" color="dimmed">
-                        Product Information:
-                    </Text>
-                    <div>
-                        <Text fw={500} size="sm">
-                            {product.description}
-                        </Text>
-                        <Text fw={500} size="sm">
-                            Price: {product.price}
-                        </Text>
-                    </div>
-                </Card.Section>
-            </Card.Section>
-        </Card>
-    )
+                        <Card.Section>
+                            <Text size="xs" color="dimmed">
+                                Product Information:
+                            </Text>
+                            <Text fw={500} size="sm">
+                                {item.description}
+                            </Text>
+                            <Text fw={500} size="sm">
+                                Price: {item.price}
+                            </Text>
+                            <Button variant="filled" color="gray">Button</Button>
+                        </Card.Section>
+                    </Card.Section>
+                
+            </Card>
+            </div>
+            );
+}
+
+            export default function ProductCardList({product: productList }: {product: ProductDto[] }) {
+    return (
+            <ul className="divide-y divide-gray-200">
+                {productList.map((productItem) => (
+                    <ProductCard key={productItem.id} item={productItem} />
+                ))}
+            </ul>
+            );
 }
