@@ -3,7 +3,7 @@ import { HomePage } from "./pages/HomePage";
 import { AppShell } from "@mantine/core";
 import { About } from "./pages/About";
 import { Cart } from "./pages/Cart";
-import { Products } from "./pages/Products";
+import { Products } from "./pages/Products/components";
 
 
  export default function App(){
