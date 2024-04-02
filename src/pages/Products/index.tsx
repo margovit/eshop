@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, Button, Modal } from '@mantine/core';
+import { Card, Image, Text, Group, Button, Modal, AspectRatio, rem } from '@mantine/core';
 import { useQuery } from "@tanstack/react-query";
 import { useState } from 'react';
 import { ProductDto } from '../../lib/dto/product';
@@ -40,38 +40,42 @@ export function Products() {
     )
 }
 
-interface ProductCardProps { 
+interface ProductCardProps {
     item: ProductDto;
     onOpenModal?: (product: ProductDto) => void;
 }
 
 export function ProductCard({ item, onOpenModal }: ProductCardProps) {
     return (
-        <div className="card-wrapper">
-            <Card
-                className="bg-dimmed w-full max-w-sm"
-                shadow="sm"
-                padding="lg"
-                radius="md"
-                withBorder
-                style={{ cursor: 'pointer' }}
-            >
-                <Image src={item.image} alt={item.title} className="w-full h-auto" />
-                <Group justify="center" gap="sm">
-                    <Text fz="sm" fw={500}>
-                        {item.title}
-                    </Text>
-                    <Text fz="xs" c="dimmed">
-                        {item.description}
-                    </Text>
-                    <Text c="dimmed" fz="xs">
-                        {item.category}
-                    </Text>
-                    <Button size="xs" variant="link" onClick={() => onOpenModal?.(item)}>
-                        Buy
-                    </Button>
-                </Group>
-            </Card>
+        <div className="grid grid-cols-1">
+            <div style={{ display: 'flex' }}>
+                <AspectRatio ratio={1080 / 720} maw={300} mx="auto">
+                    <Card
+                        className="bg-dimmed w-full max-w-sm"
+                        shadow="sm"
+                        padding="md"
+                        radius="md"
+                        withBorder
+                        style={{ cursor: 'pointer' }}
+                    >
+                        <Image src={item.image} alt={item.title} className="w-full h-auto" />
+                        <Group py={10} justify="space-between">
+                            <Group gap={5}>
+                                <Text fw={500} size="sm">{item.rating.rate}
+                                    <Text size="xs" c="dimmed">{item.rating.count}x</Text>
+                                    {item.title}
+                                </Text>
+                                <Text c="dimmed" fz="xs">
+                                    {item.category}
+                                </Text>
+                                <Button size="xs" variant="filled" color="yellow" onClick={() => onOpenModal?.(item)}>
+                                    Add
+                                </Button>
+                            </Group>
+                        </Group>
+                    </Card>
+                </AspectRatio>
+            </div>
         </div>
     );
 }
