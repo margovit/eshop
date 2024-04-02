@@ -29,10 +29,10 @@ export function Products() {
     }
 
     return (
-        <div className="products">
-            {data && data.map((product: ProductDto) => (
-                <ProductCard key={product.id} item={product} />
-            ))}
+    <div className="flex flex-wrap justify-around items-start">
+    {data && data.map((product: ProductDto) => (
+        <ProductCard key={product.id} item={product} />
+        ))}
         </div>
     )
 }
