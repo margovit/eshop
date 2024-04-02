@@ -7,16 +7,12 @@ import { fetchProducts } from '../../lib/api/product';
 
 
 export function Products() {
-    const { isLoading, data } = useQuery({
+    const { isPending, data } = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts,
     })
 
     const [selectedProduct, setSelectedProduct] = useState<ProductDto | null>(null);
-
-    if (isLoading) {
-        return <span>Loading</span>
-    }
 
     const openModal = (product: ProductDto) => {
         setSelectedProduct(product);
@@ -24,6 +20,10 @@ export function Products() {
 
     const closeModal = () => {
         setSelectedProduct(null);
+    }
+
+    if (isPending) {
+        return <span>Loading</span>
     }
 
     return (
