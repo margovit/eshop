@@ -6,23 +6,10 @@ export default {
   ],
   darkMode: "class",
   theme: {
-    extend: {
-      colors:{
-        primary:"#fdc62e",
-        secondary:"#0c090a",
-        brandBlue:"#1376f4",
-        brandWhite:"eeeeee",
-        brandYellow:"fdc62e"
-      },
-      container:{
-        center: true,
-        padding: {
-          default:"1rem",
-          sm:"3rem",
-        }
-      }
-    },
+    extend: [],
+
   },
+
   plugins: [],
   corePlugins: {
     preflight: false,

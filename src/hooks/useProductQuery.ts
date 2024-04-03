@@ -3,7 +3,7 @@ import { fetchProducts } from '../lib/api/product';
 
 export function useProductQuery() {
     return useQuery({
-        queryKey: ['products'],
+        queryKey: ['products' ],
         queryFn: fetchProducts,
     });
 }

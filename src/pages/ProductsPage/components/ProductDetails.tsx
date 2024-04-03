@@ -1,5 +1,4 @@
-import React from 'react';
-import { ProductDto } from '../../lib/dto/product';
+import { ProductDto } from '../../../lib/dto/product';
 
 interface ProductDetailsProps {
     product: ProductDto;

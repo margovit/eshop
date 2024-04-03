@@ -1,13 +1,13 @@
-import { Card, Image, Text, Group, Button, Modal, AspectRatio, rem } from '@mantine/core';
-import { ProductDto } from '../../lib/dto/product';
-import { ProductDetails } from './ProductDetails';
+import { Card, Image, Text, Group, Button, AspectRatio } from '@mantine/core';
+import { ProductDto } from '../../../lib/dto/product';
+import { Link } from 'react-router-dom';
 
 interface ProductCardProps {
     item: ProductDto;
-    onOpenProductDetailsPage?: (product: ProductDto) => void;
+    onAddToCart?: (product: ProductDto) => void;
 }
 
-export function ProductCard({ item, onOpenProductDetailsPage }: ProductCardProps) {
+export function ProductCard({ item, onAddToCart }: ProductCardProps) {
     return (
         <div className="grid grid-cols-1">
             <div style={{ display: 'flex' }}>
@@ -30,7 +30,14 @@ export function ProductCard({ item, onOpenProductDetailsPage }: ProductCardProps
                                 <Text c="dimmed" fz="xs">
                                     {item.category}
                                 </Text>
-                                <Button size="xs" variant="filled" color="yellow" onClick={() => onOpenProductDetailsPage?.(item)}>
+                                <Button
+                                    size="xs"
+                                    variant="filled"
+                                    color="yellow"
+                                    component={Link}
+                                    to="/cart"
+                                    onClick={() => onAddToCart && onAddToCart(item)}
+                                >
                                     Add
                                 </Button>
                             </Group>
