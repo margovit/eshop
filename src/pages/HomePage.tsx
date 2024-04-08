@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import { ProductDto } from '../types/types'; 
-import { ProductContext } from 'src/context/ProductContext';
-import Product from 'src/components/Product';
+import { ProductContext } from '../context/ProductContext';
+import Product from '../components/Product';
 
 interface ProductProps{
-    product: ProductDto[];
+    product: ProductDto;
 }
 
 const HomePage = ()=>{

@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AppShell } from "@mantine/core";
-import { Cart } from "./pages/CartPage";
-import {HomePage} from "./pages/HomePage";
+import HomePage from './pages/HomePage';
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
@@ -17,7 +16,6 @@ export default function App(){
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:productId" element={<ProductDetailsPage/>}/>;
-        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Navigate to="/products" />} />
       </Routes>
       <Sidebar />

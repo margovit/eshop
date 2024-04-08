@@ -8,13 +8,15 @@ import ProductProvider from './context/ProductContext.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ProductProvider>
-    <React.StrictMode>
+
+  <React.StrictMode>
+    <ProductProvider>
       <BrowserRouter>
         <MantineProvider>
           <App />
         </MantineProvider>
       </BrowserRouter>
-    </React.StrictMode >
-  </ProductProvider>
+    </ProductProvider>
+  </React.StrictMode >
+
 );

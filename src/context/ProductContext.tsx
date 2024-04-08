@@ -1,12 +1,11 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import Product from "src/components/Product";
 import { ProductDto } from "src/types/types";
 
-interface ProductContextType{
+interface ProductContextProps{
     products: ProductDto[];
 }
 
-export const ProductContext =  createContext<ProductContextType>({
+export const ProductContext =  createContext<ProductContextProps>({
     products: [],
 });
 
