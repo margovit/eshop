@@ -1,6 +1,6 @@
-import { Card, Image, Text, Group, Button, AspectRatio } from '@mantine/core';
+import { Card, Image, Text, Button, Flex } from '@mantine/core';
 import { ProductDto } from '../../../lib/dto/product';
-import { Link } from 'react-router-dom';
+
 
 interface ProductCardProps {
     item: ProductDto;
@@ -9,42 +9,35 @@ interface ProductCardProps {
 
 export function ProductCard({ item, onAddToCart }: ProductCardProps) {
     return (
-        <div className="grid grid-cols-1">
-            <div style={{ display: 'flex' }}>
-                <AspectRatio ratio={1080 / 720} maw={300} mx="auto">
-                    <Card
-                        className="bg-dimmed w-full max-w-sm"
-                        shadow="sm"
-                        padding="md"
-                        radius="md"
-                        withBorder
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <Image src={item.image} alt={item.title} className="w-full h-auto" />
-                        <Group py={10} justify="space-between">
-                            <Group gap={5}>
-                                <Text fw={500} size="sm">{item.rating.rate}
-                                    <Text size="xs" c="dimmed">{item.rating.count}x</Text>
-                                    {item.title}
-                                </Text>
-                                <Text c="dimmed" fz="xs">
-                                    {item.category}
-                                </Text>
-                                <Button
-                                    size="xs"
-                                    variant="filled"
-                                    color="yellow"
-                                    component={Link}
-                                    to="/cart"
-                                    onClick={() => onAddToCart && onAddToCart(item)}
-                                >
-                                    Add
-                                </Button>
-                            </Group>
-                        </Group>
-                    </Card>
-                </AspectRatio>
-            </div>
-        </div>
+        <Card shadow="sm" padding="md" radius="md" withBorder style={{ cursor: 'pointer', marginBottom: 20 }}>
+                <Image src={item.image} alt={item.title} className="w-full h-auto" />
+                <Flex
+                    direction="row"
+                    mt="sm"
+                    mih={50}
+                    gap="xs"
+                    justify="flex-start"
+                    align="flex-start"
+                    wrap="wrap"
+                >
+                    <Flex direction="column" mt="md">
+                        <Text size="sm" className="weight-600">
+                            {item.title}
+                        </Text>
+                        <Text size="xs" color="dimmed">
+                            {item.category}
+                        </Text>
+                    </Flex>
+                    <Flex align="center" justify="space-between">
+                        <Text size="xs" color="dimmed">
+                            {item.rating.rate} ({item.rating.count} reviews)
+                        </Text>
+                        <Button variant="filled" color="yellow" size="xs" onClick={() => onAddToCart && onAddToCart(item)} style={{ margin: '0.5rem' }}>
+                            Add
+                        </Button>
+                    </Flex>
+                </Flex>
+        </Card>
+
     );
 }
