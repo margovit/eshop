@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { BsBag } from 'react-icons/bs';
 import { SidebarContext } from '../context/SidebarContext';
 
 const Header = () => {
@@ -20,9 +19,9 @@ const Header = () => {
                 <div onClick={() => setIsOpen(!isOpen)} className='cursor-pointer flex relative'
                 >
                     <img
-                        src="./shopping-bag.png"
+                        src='src/images/myBag.png'
                         alt="Bag Icon"
-                        style={{ width: '35px', height: '35px' }}
+                        style={{ width: '40px', height: '40px' }}
                     />
                 </div>
             </div>

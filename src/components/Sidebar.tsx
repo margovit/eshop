@@ -8,7 +8,7 @@ import { CartContext } from '../context/CartContext';
 
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
-    console.log(useContext(CartContext));
+    const { cart } =useContext(CartContext);
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} 
         w-full bg-white fixed top-0 
@@ -27,6 +27,7 @@ const Sidebar = () => {
                     <CloseButton variant="light" color="yellow"className='text-2xl' />
                 </div>
             </div>
+            <div></div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import { MantineProvider } from '@mantine/core';
 import "./input.css";
 import ProductProvider from './context/ProductContext.tsx';
 import { SidebarProvider } from './context/SidebarContext.tsx';
-import { CartProvider } from './context/CartContext.tsx';
+import  CartProvider  from './context/CartContext.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

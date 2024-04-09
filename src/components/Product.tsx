@@ -38,7 +38,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             <div
                                 style={{ marginTop: '1rem' }}>
                                 <Button variant="light" color="yellow" style={{ marginRight: '0.5rem' }}
-                                onClick={() => addToCart(Number(id))}
+                                onClick={() => addToCart(product, Number(id))}
                                 >
                                     <IconHeart />
                                 </Button>
