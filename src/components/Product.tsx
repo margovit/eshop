@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconHeart, IconArrowRight } from '@tabler/icons-react';
 import { Button, Card, Text, Flex } from '@mantine/core';
 import { ProductDto } from 'src/types/types';
+import {CartContext} from '../context/CartContext';
 
 interface ProductProps {
     product: ProductDto;
 }
 
 const Product: React.FC<ProductProps> = ({ product }) => {
+    const { addToCart } = useContext(CartContext);
+
     const { id, image, category, title, price, rating } = product;
 
     return (
@@ -34,7 +37,9 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             </div>
                             <div
                                 style={{ marginTop: '1rem' }}>
-                                <Button variant="light" color="yellow" style={{ marginRight: '0.5rem' }}>
+                                <Button variant="light" color="yellow" style={{ marginRight: '0.5rem' }}
+                                onClick={() => addToCart(Number(id))}
+                                >
                                     <IconHeart />
                                 </Button>
                                 <Link to={`/product/${id}`}>

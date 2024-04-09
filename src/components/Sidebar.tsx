@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { ActionIcon, CloseButton, Button } from "@mantine/core";
+import {  CloseButton } from "@mantine/core";
 import CartItem from "./CartItem";
-import { SidebarContext } from "src/context/SidebarContext";
-import { IconArrowRight } from "@tabler/icons-react";
+import { SidebarContext } from '../context/SidebarContext';
+import { CartContext } from '../context/CartContext';
 
 
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
+    console.log(useContext(CartContext));
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} 
         w-full bg-white fixed top-0 
@@ -23,9 +24,7 @@ const Sidebar = () => {
                 onClick={handleClose} 
                 className='cursor-pointer w-8 h-8 flex justify-center items-center'
                 >
-                    <Button variant="light" color="yellow"className='text-2xl'>
-                        <IconArrowRight />
-                    </Button>
+                    <CloseButton variant="light" color="yellow"className='text-2xl' />
                 </div>
             </div>
         </div>

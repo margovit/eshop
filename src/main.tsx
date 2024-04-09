@@ -6,10 +6,12 @@ import { MantineProvider } from '@mantine/core';
 import "./input.css";
 import ProductProvider from './context/ProductContext.tsx';
 import { SidebarProvider } from './context/SidebarContext.tsx';
+import { CartProvider } from './context/CartContext.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <SidebarProvider>
+    <CartProvider>
     <React.StrictMode>
       <ProductProvider>
         <BrowserRouter>
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </ProductProvider>
     </React.StrictMode >
+    </CartProvider>
   </SidebarProvider>
 
 );
