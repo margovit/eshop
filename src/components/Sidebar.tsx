@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import { Link } from 'react-router-dom';
-import {  CloseButton } from "@mantine/core";
-import CartItem from "./CartItem";
+import  { useContext } from "react";
+import { CloseButton } from "@mantine/core";
 import { SidebarContext } from '../context/SidebarContext';
 import { CartContext } from '../context/CartContext';
+import CartItem from '../components/CartItem';
 
 
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
-    const { cart } =useContext(CartContext);
+    const { cart } = useContext(CartContext);
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} 
         w-full bg-white fixed top-0 
@@ -20,14 +19,18 @@ const Sidebar = () => {
         >
             <div className='flex items-center justify-between py-6 border-b'>
                 <div className='uppercase text-sm'>My shopping Bag(0)</div>
-                <div 
-                onClick={handleClose} 
-                className='cursor-pointer w-8 h-8 flex justify-center items-center'
+                <div
+                    onClick={handleClose}
+                    className='cursor-pointer w-8 h-8 flex justify-center items-center'
                 >
-                    <CloseButton variant="light" color="yellow"className='text-2xl' />
+                    <CloseButton variant="transparent" color="yellow"  size="lg" />
                 </div>
             </div>
-            <div></div>
+            <div>
+                {cart.map((item) => {
+                    return <CartItem item={item} key={item.id} />
+                })}
+            </div>
         </div>
     );
 };
