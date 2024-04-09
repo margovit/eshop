@@ -5,6 +5,7 @@ import { CartContext } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 
 
+
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
     const { cart } = useContext(CartContext);
