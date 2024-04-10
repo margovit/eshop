@@ -1,8 +1,9 @@
 import  { useContext } from "react";
-import { CloseButton } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { SidebarContext } from '../context/SidebarContext';
 import { CartContext } from '../context/CartContext';
 import CartItem from '../components/CartItem';
+import { IconArrowRight } from "@tabler/icons-react";
 
 
 
@@ -18,16 +19,16 @@ const Sidebar = () => {
         transition-all 
         duration-300 z-20 px-4 lg:px-[35px]`}
         >
-            <div className='flex items-center justify-between py-6 border-b'>
-                <div className='uppercase text-sm'>My shopping Bag(0)</div>
+            <div className='flex items-center justify-between py-6 border-b border-gray-300 '>
+                <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag(0)</div>
                 <div
                     onClick={handleClose}
                     className='cursor-pointer w-8 h-8 flex justify-center items-center'
                 >
-                    <CloseButton variant="transparent" color="yellow"  size="lg" />
+                    <Button variant="transparent" color="yellow"  justify="center" fullWidth leftSection={<IconArrowRight size={28}/>} />
                 </div>
             </div>
-            <div>
+            <div className="py-5">
                 {cart.map((item) => {
                     return <CartItem item={item} key={item.id} />
                 })}

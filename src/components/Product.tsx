@@ -17,7 +17,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     return (
         <div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-                <Card className='border border-[#E1DEE6] h-[300px] mb-4 relative overflow-hidden group transition'
+                <Card className='border border-b h-[300px] mb-4 relative overflow-hidden group transition'
                     shadow="xl"
                     style={{ width: '35%', marginRight: 20, borderWidth: '0.1px' }}>
                     <Flex>
@@ -28,8 +28,8 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             style={{ width: 100, height: 150, objectFit: 'cover' }}
                         />
                         <div style={{ padding: '1rem' }}>
-                            <Text className='font-semibold mb-2'size="lg">{title}</Text>
-                            <Text size="sm" color="41444b">{category}</Text>
+                            <Text className='uppercase font-semibold mb-2 text-gray-800'size="sm">{title}</Text>
+                            <Text size="sm" color="#41444b">{category}</Text>
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.5rem' }}>
                                 <Text
                                     size="sm">{rating.rate} ({rating.count} reviews)</Text>
