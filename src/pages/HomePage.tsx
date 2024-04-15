@@ -29,11 +29,11 @@ const HomePage = () => {
     }
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
             <Container size="xl">
                 <Grid justify="flex-start" align="flex-start" gutter="lg">
                     {filteredProducts?.map((product: ProductDto) => (
-                        <Grid.Col span={12} key={product.id}>
+                         <Grid.Col key={product.id}>
                             <Product product={product} />
                         </Grid.Col>
                     ))}

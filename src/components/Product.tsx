@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { IconHeart, IconArrowRight } from '@tabler/icons-react';
 import { Button, Card, Text, Flex, Rating } from '@mantine/core';
@@ -11,7 +11,6 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product }) => {
     const { addToCart } = useContext(CartContext);
-
     const { id, image, category, title, price, rating } = product;
 
     return (
@@ -19,7 +18,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 <Card className='border border-b h-[300px] mb-4 relative overflow-hidden group transition'
                     shadow="xl"
-                    style={{ width: '35%', marginRight: 20, borderWidth: '0.1px' }}>
+                    style={{ width: '30%', height:'30%', marginRight: 20, borderWidth: '0.1px' }}>
                     <Flex>
                         <img
                             className='max-h-[250px] group-hover:scale-110'
