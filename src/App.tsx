@@ -7,8 +7,6 @@ import Footer from "./components/Footer";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 
-
-
 export default function App(){
   return (
     <AppShell>
@@ -16,7 +14,7 @@ export default function App(){
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:productId" element={<ProductDetailsPage/>}/>;
-        <Route path="*" element={<Navigate to="/products" />} />
+        <Route path="*" element={<Navigate to="/product" />} />
       </Routes>
       <Sidebar />
       <Footer />

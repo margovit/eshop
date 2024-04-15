@@ -6,7 +6,6 @@ import CartItem from '../components/CartItem';
 import { IconArrowRight } from "@tabler/icons-react";
 
 
-
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
     const { cart } = useContext(CartContext);
@@ -33,6 +32,7 @@ const Sidebar = () => {
                     return <CartItem item={item} key={item.id} />
                 })}
             </div>
+            
         </div>
     );
 };

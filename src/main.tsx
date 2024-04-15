@@ -7,9 +7,12 @@ import "./input.css";
 import ProductProvider from './context/ProductContext.tsx';
 import { SidebarProvider } from './context/SidebarContext.tsx';
 import  CartProvider  from './context/CartContext.tsx';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+  <QueryClientProvider client={queryClient}>
   <SidebarProvider>
     <CartProvider>
     <React.StrictMode>
@@ -23,5 +26,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </React.StrictMode >
     </CartProvider>
   </SidebarProvider>
-
+  </QueryClientProvider>,
 );

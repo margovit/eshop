@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext,  ReactNode } from "react";
 import { ProductDto } from "../types/types";
 
 interface ProductContextProps {
