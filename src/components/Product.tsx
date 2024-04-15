@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconHeart, IconArrowRight } from '@tabler/icons-react';
-import { Button, Card, Text, Flex } from '@mantine/core';
+import { Button, Card, Text, Flex, Rating } from '@mantine/core';
 import { ProductDto } from 'src/types/types';
 import {CartContext} from '../context/CartContext';
 
@@ -30,6 +30,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                         <div style={{ padding: '1rem' }}>
                             <Text className='uppercase font-semibold mb-2 text-gray-800'size="sm">{title}</Text>
                             <Text size="sm" color="#41444b">{category}</Text>
+                            <Rating value={rating.rate} style={{ marginTop: '0.5rem' }} />
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.5rem' }}>
                                 <Text
                                     size="sm">{rating.rate} ({rating.count} reviews)</Text>
