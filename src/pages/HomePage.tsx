@@ -1,18 +1,32 @@
-import React, { useContext } from 'react';
 import { ProductDto } from '../types/types';
-import { ProductContext } from '../context/ProductContext';
 import Product from '../components/Product';
 import { Container, Grid } from '@mantine/core';
+import { useQuery } from '@tanstack/react-query';
 
-interface ProductProps {
-    product: ProductDto;
-}
 
 const HomePage = () => {
-    const { products } = useContext(ProductContext);
+    const { data: products = [], isLoading, error } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const response = await fetch('https://fakestoreapi.com/products');
+            if (!response.ok) {
+                throw new Error("Failed to fetch products");
+            }
+            return response.json() as Promise<ProductDto[]>;
+        }
+    });
+
     const filteredProducts = products.filter((item: ProductDto) => (
         item.category === "men's clothing" || item.category === "women's clothing"
     ));
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
 
     return (
         <div>

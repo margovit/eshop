@@ -14,7 +14,7 @@ interface CartItemType {
 }
 
 const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
-    const { removeFromCard } = useContext(CartContext);
+    const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
     const { id, title, image, price, amount } = item;
     return (
         <Card shadow="xs" padding="sm" radius="lg" className='mb-4'>
@@ -31,6 +31,7 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                                 color="yellow"
                                 size="xs"
                                 className="mr-2"
+                                onClick={() =>increaseAmount(id) }
                             >
                                 +
                             </Button>
@@ -40,6 +41,7 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                                 color="yellow"
                                 size="xs"
                                 className="ml-2"
+                                onClick={() => decreaseAmount(id)}
                             >
                                 -
                             </Button>
@@ -49,7 +51,7 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                         <div className='text-sm font-bold text-gray-700'><span className="text-sm font-bold text-gray-700">{`$`}</span> {`${(price * amount).toFixed(2)}`}</div>
                     </div>
                 </div>
-                <CloseButton onClick={() => removeFromCard(item.id, item.product!)} size="sm" variant="transparent" className='ml-4 hover:text-yellow-500' />
+                <CloseButton onClick={() => removeFromCart(item.id, item.product!)} size="sm" variant="transparent" className='ml-4 hover:text-yellow-500' />
 
             </div>
         </Card>
