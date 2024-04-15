@@ -21,10 +21,9 @@ const Sidebar = () => {
             <div className='flex items-center justify-between py-6 border-b border-gray-300 '>
                 <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag(0)</div>
                 <div
-                    onClick={handleClose}
                     className='cursor-pointer w-8 h-8 flex justify-center items-center'
                 >
-                    <Button variant="transparent" color="yellow" justify="center" fullWidth leftSection={<IconArrowRight size={28} />} />
+                    <Button variant="transparent" color="yellow" justify="center" fullWidth onClick={handleClose} leftSection={<IconArrowRight size={28} />} />
                 </div>
             </div>
             <div className="py-5">
