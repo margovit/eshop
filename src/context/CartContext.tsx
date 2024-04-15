@@ -45,7 +45,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
         }
     };
 
-    const removeFromCard = (id: number, product: ProductDto) =>{
+    const removeFromCard = (id: ProductDto['id']) =>{
         const newCart = cart.filter((item) =>{
             return item.id !== id;
         });
