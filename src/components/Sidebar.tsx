@@ -18,15 +18,15 @@ const Sidebar = () => {
         transition-all 
         duration-300 z-20 px-4 lg:px-[35px]`}
         >
-            <div className='flex items-center justify-between py-6 border-b border-gray-300 '>
-                <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag(0)</div>
+            <div className='flex items-center justify-between py-6 border-b border-gray-300  overflow-x-hidden border-b'>
+                <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag</div>
                 <div
-                    className='cursor-pointer w-8 h-8 flex justify-center items-center'
+                    className='cursor-pointer w-8 h-8 flex justify-center items-center flex-col h-[100px]'
                 >
-                    <Button variant="transparent" color="yellow" justify="center" fullWidth onClick={handleClose} leftSection={<IconArrowRight size={28} />} />
+                    <Button variant="transparent" color='#eb5e28' justify="center" fullWidth onClick={handleClose} leftSection={<IconArrowRight size={28} />} />
                 </div>
             </div>
-            <div className="py-5">
+            <div className='py-4'>
                 {cart.map((item) => {
                     return <CartItem item={item} key={item.id} />
                 })}
@@ -36,7 +36,7 @@ const Sidebar = () => {
                     <Text size="sm" fw={500} >Total price:</Text> 
                 </div>
                 <div className="flex items-center">
-                    <ActionIcon variant="filled" color="yellow" size='xl' onClick={clearCart}>
+                    <ActionIcon variant="filled" color='#eb5e28' size='xl' onClick={clearCart}>
                         <IconTrash />
                     </ActionIcon>
                 </div>

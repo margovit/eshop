@@ -14,7 +14,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
     const { id, image, category, title, price, rating } = product;
 
     return (
-        <div>
+        <div style={{ marginTop: '100px'}}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 <Card className='border border-b h-[300px] mb-4 relative overflow-hidden group transition'
                     shadow="xl"
@@ -28,8 +28,8 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                         />
                         <div style={{ padding: '1rem' }}>
                             <Text className='uppercase font-semibold mb-2 text-gray-800'size="sm">{title}</Text>
-                            <Text size="sm" color="#41444b">{category}</Text>
-                            <Rating value={rating.rate} style={{ marginTop: '0.5rem' }} />
+                            <Text size="xs">{category}</Text>
+                            <Rating value={rating.rate}  color='#eb5e28' style={{ marginTop: '0.5rem' }} />
                             <div style={{ display: 'flex', alignItems: 'center', marginTop: '0.5rem' }}>
                                 <Text
                                     size="sm">{rating.rate} ({rating.count} reviews)</Text>
@@ -37,13 +37,13 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                             </div>
                             <div
                                 style={{ marginTop: '1rem' }}>
-                                <Button variant="light" color="yellow" style={{ marginRight: '0.5rem' }}
+                                <Button variant="light" color='#eb5e28' style={{ marginRight: '0.5rem' }}
                                 onClick={() => addToCart(product, Number(id))}
                                 >
                                     <IconHeart />
                                 </Button>
                                 <Link to={`/product/${id}`}>
-                                    <Button variant="light" color="yellow">
+                                    <Button variant="light" color='#eb5e28'>
                                         <IconArrowRight />
                                     </Button>
                                 </Link>

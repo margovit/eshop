@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { ProductDto } from '../types/types';
 
 
@@ -33,6 +33,14 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
     const [cart, setCart] = useState<ProductDtoWithAmount[]>([]);
     const [itemAmount, setItemAmount] = useState(0);
+
+    useEffect(() => {
+        let totalItems = 0;
+        cart.forEach((item) => {
+            totalItems += item.amount;
+        });
+        setItemAmount(totalItems);
+    }, [cart]);
 
     const addToCart = (product: ProductDto, id: number) => {
         const newItem: ProductDtoWithAmount = { ...product, amount: 1 };
