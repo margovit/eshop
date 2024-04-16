@@ -28,7 +28,7 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                         <div className="flex items-center space-x-2">
                             <Button
                                 variant='light'
-                                color='#403d39'
+                                color='#252422'
                                 size="xs"
                                 className="mr-2"
                                 onClick={() =>increaseAmount(id) }
@@ -38,14 +38,14 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                             <div className='text-xs'>{amount}</div>
                             <Button
                                 variant='light'
-                                color='#403d39'
+                                color='#252422'
                                 size="xs"
                                 className="ml-2"
                                 onClick={() => decreaseAmount(id)}
                             >
                                 -
                             </Button>
-                            <div className="text-xs font-bold ml-8 text-gray-500">{price.toFixed(2)} <span className="text-xs font-bold">{`$`}</span>
+                            <div className='text-xs font-bold ml-8 text-gray-500'>{price.toFixed(2)} <span className="text-xs font-bold">{`$`}</span>
                             </div>
                         </div>
                         <div className='text-xs font-bold text-gray-700'><span className="text-xs font-bold text-gray-700">{`$`}</span> {`${(price * amount).toFixed(2)}`}</div>

@@ -17,6 +17,7 @@ const Sidebar = () => {
         xl:max-w-[30vw] 
         transition-all 
         duration-300 z-20 px-4 lg:px-[35px]`}
+        style={{maxHeight:'100%', overflowY:'auto'}}
         >
             <div className='flex items-center justify-between py-6 border-b border-gray-300  overflow-x-hidden border-b'>
                 <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag</div>
@@ -33,7 +34,9 @@ const Sidebar = () => {
             </div>
             <div className="flex justify-between py-5">
                 <div className="flex items-center">
-                    <Text size="sm" fw={500} className='uppercase text-sm font-bold' >Total:  {total.toFixed(2).toString()} $</Text>
+                    <Text className='text-xs font-bold uppercase' style={{ color: '#403d39' }}>
+                        Total: {total.toFixed(2).toString()} $
+                    </Text>
                 </div>
                 <div className="flex items-center">
                     <ActionIcon variant="filled" color='#eb5e28' size='xl' onClick={clearCart}>

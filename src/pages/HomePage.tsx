@@ -1,8 +1,8 @@
 import { ProductDto } from '../types/types';
-import Product from '../components/Product';
 import { Container, Grid } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 import ProductList from '../components/ProductList';
+import Hero from '../components/Hero';
 
 
 const HomePage = () => {
@@ -31,10 +31,11 @@ const HomePage = () => {
 
     return (
         <div style={{ display: 'flex-wrap', flexDirection: 'row', gap: '20px' }}>
+            <Hero />
             <Container size="xl">
                 <Grid justify="flex-start" align="flex-start" gutter="lg">
                     {filteredProducts?.map((product: ProductDto) => (
-                         <Grid.Col key={product.id}>
+                        <Grid.Col key={product.id}>
                             <ProductList products={[product]} />
                         </Grid.Col>
                     ))}
