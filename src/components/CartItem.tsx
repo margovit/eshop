@@ -27,18 +27,18 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                     <div className="flex justify-between items-center mt-4 mr-2">
                         <div className="flex items-center space-x-2">
                             <Button
-                                variant="light"
-                                color="yellow"
+                                variant='light'
+                                color='#403d39'
                                 size="xs"
                                 className="mr-2"
                                 onClick={() =>increaseAmount(id) }
                             >
                                 +
                             </Button>
-                            <div>{amount}</div>
+                            <div className='text-xs'>{amount}</div>
                             <Button
-                                variant="light"
-                                color="yellow"
+                                variant='light'
+                                color='#403d39'
                                 size="xs"
                                 className="ml-2"
                                 onClick={() => decreaseAmount(id)}
@@ -48,10 +48,10 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                             <div className="text-xs font-bold ml-8 text-gray-500">{price.toFixed(2)} <span className="text-xs font-bold">{`$`}</span>
                             </div>
                         </div>
-                        <div className='text-sm font-bold text-gray-700'><span className="text-sm font-bold text-gray-700">{`$`}</span> {`${(price * amount).toFixed(2)}`}</div>
+                        <div className='text-xs font-bold text-gray-700'><span className="text-xs font-bold text-gray-700">{`$`}</span> {`${(price * amount).toFixed(2)}`}</div>
                     </div>
                 </div>
-                <CloseButton onClick={() => removeFromCart(item.id, item.product!)} size="sm" variant="transparent" className='ml-4 hover:text-yellow-500' />
+                <CloseButton onClick={() => removeFromCart(item.id, item.product!)} size="xs" variant="transparent"  className='ml-4 hover:text-[#eb5e28]' />
 
             </div>
         </Card>

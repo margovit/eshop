@@ -8,7 +8,7 @@ import { IconArrowRight, IconTrash } from "@tabler/icons-react";
 
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
-    const { cart, clearCart } = useContext(CartContext);
+    const { cart, clearCart, total } = useContext(CartContext);
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} 
         w-full bg-white fixed top-0 
@@ -33,7 +33,7 @@ const Sidebar = () => {
             </div>
             <div className="flex justify-between py-5">
                 <div className="flex items-center">
-                    <Text size="sm" fw={500} >Total price:</Text> 
+                    <Text size="sm" fw={500} className='uppercase text-sm font-bold' >Total:  {total.toFixed(2).toString()} $</Text>
                 </div>
                 <div className="flex items-center">
                     <ActionIcon variant="filled" color='#eb5e28' size='xl' onClick={clearCart}>

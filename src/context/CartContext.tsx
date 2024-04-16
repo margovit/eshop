@@ -14,6 +14,7 @@ interface CartContextType {
     increaseAmount: (id: number) => void;
     decreaseAmount: (id: number) => void;
     itemAmount: number;
+    total: number;
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -24,6 +25,7 @@ export const CartContext = createContext<CartContextType>({
     increaseAmount: () => { },
     decreaseAmount: () => { },
     itemAmount: 0,
+    total:0,
 });
 
 interface CartProviderProps {
@@ -33,6 +35,14 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
     const [cart, setCart] = useState<ProductDtoWithAmount[]>([]);
     const [itemAmount, setItemAmount] = useState(0);
+    const [total, setTotal] = useState(0);
+    
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) =>{
+            return accumulator + currentItem.price * currentItem.amount;
+        }, 0);
+        setTotal(total);
+    })
 
     useEffect(() => {
         let totalItems = 0;
@@ -110,6 +120,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
                 increaseAmount,
                 decreaseAmount,
                 itemAmount,
+                total,
             }}>
             {children}
         </CartContext.Provider>
