@@ -4,6 +4,7 @@ import { SidebarContext } from '../context/SidebarContext';
 import { CartContext } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 import { IconArrowRight, IconTrash } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -17,7 +18,7 @@ const Sidebar = () => {
         xl:max-w-[30vw] 
         transition-all 
         duration-300 z-20 px-4 lg:px-[35px]`}
-        style={{maxHeight:'100%', overflowY:'auto'}}
+            style={{ maxHeight: '100%', overflowY: 'auto' }}
         >
             <div className='flex items-center justify-between py-6 border-b border-gray-300  overflow-x-hidden border-b'>
                 <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag</div>
@@ -43,7 +44,17 @@ const Sidebar = () => {
                         <IconTrash />
                     </ActionIcon>
                 </div>
+
             </div>
+            <Link
+                to='/' className='bg-gray-200 flex p-4 justify-center items-center w-full font-medium'>
+                View cart
+            </Link>
+            <Link
+                to='/' className='flex p-4 justify-center items-center text-gray-200 w-full font-medium'
+                style={{ backgroundColor: '#403D38' }}>
+                Checkout
+            </Link>
         </div>
     );
 };
