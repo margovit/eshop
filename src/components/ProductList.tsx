@@ -8,8 +8,8 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
-      <div className="product-list">
-        <div className="row">
+      <div className='product-list'>
+        <div className='row'>
           {products.map(product => (
             <div key={product.id}>
               <Product product={product} />

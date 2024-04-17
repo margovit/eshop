@@ -7,11 +7,11 @@ import Hero from '../components/Hero';
 
 const HomePage = () => {
     const { data: products = [], isLoading, error } = useQuery({
-        queryKey: ["products"],
+        queryKey: ['products'],
         queryFn: async () => {
             const response = await fetch('https://fakestoreapi.com/products');
             if (!response.ok) {
-                throw new Error("Failed to fetch products");
+                throw new Error('Failed to fetch products');
             }
             return response.json() as Promise<ProductDto[]>;
         }
@@ -32,8 +32,8 @@ const HomePage = () => {
     return (
         <div style={{ display: 'flex-wrap', flexDirection: 'row', gap: '20px' }}>
             <Hero />
-            <Container size="xl">
-                <Grid justify="flex-start" align="flex-start" gutter="lg">
+            <Container size='xl'>
+                <Grid justify='flex-start' align='flex-start' gutter='lg'>
                     {filteredProducts?.map((product: ProductDto) => (
                         <Grid.Col key={product.id}>
                             <ProductList products={[product]} />

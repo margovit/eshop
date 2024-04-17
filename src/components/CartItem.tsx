@@ -17,20 +17,20 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
     const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
     const { id, title, image, price, amount } = item;
     return (
-        <Card shadow="xs" padding="sm" radius="lg" className='mb-4'>
-            <div className="flex items-center">
+        <Card shadow='xs' padding='sm' radius='lg' className='mb-4'>
+            <div className='flex items-center'>
                 <img className='max-w-[80px]' src={image} alt='' />
                 <div className='ml-4 flex flex-col flex-grow'>
                     <Link to={`/product/${id}`}>
                         <h3 className='text-xs font-semibold uppercase cursor point'>{title}</h3>
                     </Link>
-                    <div className="flex justify-between items-center mt-4 mr-2">
-                        <div className="flex items-center space-x-2">
+                    <div className='flex justify-between items-center mt-4 mr-2'>
+                        <div className='flex items-center space-x-2'>
                             <Button
                                 variant='light'
                                 color='#252422'
-                                size="xs"
-                                className="mr-2"
+                                size='xs'
+                                className='mr-2'
                                 onClick={() =>increaseAmount(id) }
                             >
                                 +
@@ -39,8 +39,8 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                             <Button
                                 variant='light'
                                 color='#252422'
-                                size="xs"
-                                className="ml-2"
+                                size='xs'
+                                className='ml-2'
                                 onClick={() => decreaseAmount(id)}
                             >
                                 -

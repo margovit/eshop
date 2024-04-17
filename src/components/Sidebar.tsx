@@ -25,7 +25,7 @@ const Sidebar = () => {
                 <div
                     className='cursor-pointer w-8 h-8 flex justify-center items-center flex-col h-[100px]'
                 >
-                    <Button variant="transparent" color='#eb5e28' justify="center" fullWidth onClick={handleClose} leftSection={<IconArrowRight size={28} />} />
+                    <Button variant='transparent' color='#eb5e28' justify='center' fullWidth onClick={handleClose} leftSection={<IconArrowRight size={28} />} />
                 </div>
             </div>
             <div className='py-4'>
@@ -33,14 +33,14 @@ const Sidebar = () => {
                     return <CartItem item={item} key={item.id} />
                 })}
             </div>
-            <div className="flex justify-between py-5">
-                <div className="flex items-center">
+            <div className='flex justify-between py-5'>
+                <div className='flex items-center'>
                     <Text className='text-xs font-bold uppercase' style={{ color: '#403d39' }}>
                         Total: {total.toFixed(2).toString()} $
                     </Text>
                 </div>
-                <div className="flex items-center">
-                    <ActionIcon variant="filled" color='#eb5e28' size='xl' onClick={clearCart}>
+                <div className='flex items-center'>
+                    <ActionIcon variant='filled' color='#eb5e28' size='xl' onClick={clearCart}>
                         <IconTrash />
                     </ActionIcon>
                 </div>
