@@ -50,11 +50,6 @@ const Sidebar = () => {
                 to='/' className='bg-gray-200 flex p-4 justify-center items-center w-full font-medium'>
                 Pay
             </Link>
-            <Link
-                to='/' className='flex p-4 justify-center items-center text-gray-200 w-full font-medium'
-                style={{ backgroundColor: '#403D38' }}>
-                Checkout
-            </Link>
         </div>
     );
 };

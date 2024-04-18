@@ -42,7 +42,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             return accumulator + currentItem.price * currentItem.amount;
         }, 0);
         setTotal(total);
-    })
+    },[cart, setTotal]);
 
     useEffect(() => {
         let totalItems = 0;
