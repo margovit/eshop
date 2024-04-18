@@ -13,8 +13,8 @@ export default function App(){
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/products/:productId" element={<ProductDetailsPage/>}/>;
-        <Route path="*" element={<Navigate to="/product" />} />
+        <Route path="/products/:id" element={<ProductDetailsPage />} />
+        <Route path="*" element={<Navigate to="/products" />} />
       </Routes>
       <Sidebar />
       <Footer />

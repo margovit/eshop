@@ -8,7 +8,7 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
-      <div className="flex flex-wrap justify-start gap-4">
+      <div className="flex flex-wrap justify-start">
             {products.map(product => (
                 <div key={product.id} style={{ width: '320px', height: '320px' }}> 
                     <Product product={product} />

@@ -37,7 +37,7 @@ const HomePage = () => {
                     justify="flex-start"
                     align="flex-start"
                     gutter="lg"
-                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}
+                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', margin:'20px' }}
                 >
                     {filteredProducts.map((product: ProductDto) => (
                         <div key={product.id}>

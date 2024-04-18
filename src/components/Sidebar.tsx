@@ -20,7 +20,7 @@ const Sidebar = () => {
         duration-300 z-20 px-4 lg:px-[35px]`}
             style={{ maxHeight: '100%', overflowY: 'auto' }}
         >
-            <div className='flex items-center justify-between py-6 border-b border-gray-300  overflow-x-hidden border-b'>
+            <div className='flex items-center justify-between py-6 border-b-2 border-gray-500 overflow-x-hidden' >
                 <div className='uppercase text-sm font-bold text-gray-700'>My shopping Bag</div>
                 <div
                     className='cursor-pointer w-8 h-8 flex justify-center items-center flex-col h-[100px]'

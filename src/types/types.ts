@@ -3,6 +3,7 @@ export interface ProductDto {
     image: string;
     category: string;
     title: string;
+    description: string;
     price: number;
     rating: {
         rate: number;
