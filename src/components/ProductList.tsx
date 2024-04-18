@@ -8,16 +8,16 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
-      <div className='product-list'>
-        <div className='row'>
-          {products.map(product => (
-            <div key={product.id}>
-              <Product product={product} />
-            </div>
-          ))}
+      <div className="flex flex-wrap justify-start gap-4">
+            {products.map(product => (
+                <div key={product.id} style={{ width: '320px', height: '320px' }}> 
+                    <Product product={product} />
+                    {product.title.split(' ').length === 1 ? <div style={{ marginTop: '8px' }} /> : null}
+                </div>
+            ))}
         </div>
-      </div>
     );
-  };
+};
+
 
 export default ProductList;

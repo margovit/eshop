@@ -30,18 +30,23 @@ const HomePage = () => {
     }
 
     return (
-        <div style={{ display: 'flex-wrap', flexDirection: 'row', gap: '20px' }}>
+        <>
             <Hero />
-            <Container size='xl'>
-                <Grid justify='flex-start' align='flex-start' gutter='lg'>
-                    {filteredProducts?.map((product: ProductDto) => (
-                        <Grid.Col key={product.id}>
+            <Container size="xl">
+                <Grid
+                    justify="flex-start"
+                    align="flex-start"
+                    gutter="lg"
+                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}
+                >
+                    {filteredProducts.map((product: ProductDto) => (
+                        <div key={product.id}>
                             <ProductList products={[product]} />
-                        </Grid.Col>
+                        </div>
                     ))}
                 </Grid>
             </Container>
-        </div>
+        </>
     );
 };
 
