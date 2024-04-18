@@ -52,8 +52,8 @@ const ProductDetailsPage = () => {
                                 variant='light'
                                 color='#eb5e28'
                                 onClick={() => addToCart(product, Number(id))}
-                                className='text-3xl'
-                            >
+                                className='text-md'
+                            >Add to cart
                                 <AiOutlineShoppingCart className='text-2xl' />
                             </Button>
                         </div>
