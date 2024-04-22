@@ -32,16 +32,17 @@ const HomePage = () => {
     return (
         <>
             <Hero />
-            <Container size="xl">
+            <div className='my-30'></div>
+            <Container size="2xl">
                 <Grid
                     justify="flex-start"
                     align="flex-start"
                     gutter="lg"
-                    style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', margin:'20px' }}
+                    className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
                 >
                     {filteredProducts.map((product: ProductDto) => (
                         <div key={product.id}>
-                            <ProductList products={[product]} />
+                            <ProductList products={[product]} id={product.id} />
                         </div>
                     ))}
                 </Grid>

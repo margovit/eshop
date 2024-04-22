@@ -49,7 +49,7 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                         </div>
                         </div>
                     <div className='flex justify-between items-center mt-2'>
-                        <div className='text-xs font-semibold text-gray-500'>{price.toFixed(2)} <span className='text-xs font-semibold'>{`$`}</span></div>
+                        <div className='text-xs font-semibold text-gray-500'>{price.toFixed(2)}{`$`}</div>
                         <div className='text-xs font-bold text-gray-700'>{`${(price * amount).toFixed(2)}`}{` $`}</div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { ProductDto } from '../types/types';
@@ -9,31 +9,39 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 const ProductDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
     const { addToCart } = useContext(CartContext);
+    const [product, setProduct] = useState<ProductDto | null>(null);
 
-    const { data: products = [] } = useQuery({
-        queryKey: ['products'],
+    const { isLoading, isError, data } = useQuery<ProductDto>({
+        queryKey: ['product', id],
         queryFn: async () => {
-            const response = await fetch('https://fakestoreapi.com/products');
+            const response = await fetch(`https://fakestoreapi.com/products/${id}`);
             if (!response.ok) {
-                throw new Error('Failed to fetch products');
+                throw new Error('Failed to fetch product');
             }
-            return response.json() as Promise<ProductDto[]>;
-        }
+            return response.json() as Promise<ProductDto>;
+        },
+        enabled: !!id, 
     });
 
-    const productId = id ? parseInt(id) : undefined;
+    useEffect(() => {
+        if (data) {
+            setProduct(data);
+        }
+    }, [data]);
 
-    const product = products.find(item => item.id === productId);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
-    if (!product) {
-        return <div>Product not found</div>;
+    if (isError || !product) {
+        return <div>Error: Product not found</div>;
     }
 
     const { title, price, description, image } = product;
     return (
-        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center '>
+        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center'>
             <div className='container mx-auto'>
-                <div className='flex flex-col lg:flex-row itwms-center'>
+                <div className='flex flex-col lg:flex-row items-center'>
                     <div className='flex flex-1 justify-center items-center mb-8 lg:mb-0'>
                         <img className='max-w-[200px] lg:max-w-sm' src={image} alt='' />
                     </div>
@@ -41,7 +49,7 @@ const ProductDetailsPage = () => {
                         <Text className='font-bold uppercase mb-5 max-w-[600px] mz-auto' style={{ color: '#252422', fontSize: '30px' }}>
                             {title}
                         </Text>
-                        <Text className='text-md font-bold mb-6' style={{ color: '#403D38',marginBottom: '30px' }}>
+                        <Text className='text-md font-bold mb-6' style={{ color: '#403D38', marginBottom: '30px' }}>
                             $ {price}
                         </Text>
                         <Text style={{ marginBottom: '10px', fontSize: '16px', color: '#403D38' }}>
@@ -53,7 +61,8 @@ const ProductDetailsPage = () => {
                                 color='#eb5e28'
                                 onClick={() => addToCart(product, Number(id))}
                                 className='text-md'
-                            >Add to cart
+                            >
+                                Add to cart
                                 <AiOutlineShoppingCart className='text-2xl' />
                             </Button>
                         </div>

@@ -29,7 +29,7 @@ const Header = () => {
 
     return (
         <Paper className='fixed top-0 left-0 right-0 w-full z-10 transition-all'
-            style={{ padding: '1rem 2rem', background: isActive ? '#252422' : '#403d39', height: '85px' }}
+            style={{ padding: '1rem 2rem', background: '#252422', height: '85px' }}
         >
             <div className='flex justify-between items-center'>
                 <div className='ml-4 flex items-center'>
@@ -38,7 +38,7 @@ const Header = () => {
                     </Link>
                     <div className="flex items-center ml-auto space-x-5">
                         <div onClick={toggleSidebar} className='cursor-pointer'>
-                            <div className='flex items-center relative' style={{ marginLeft: '60rem' }}>
+                            <div className='flex w-full items-center relative items-center justify-between'>
                                 <div className='text-[16px] font-semibold flex items-center' style={{ color: '#eb5e28', marginRight: '5px' }}>
                                     {itemAmount}
                                 </div>

@@ -54,7 +54,6 @@ const Product: React.FC<ProductProps> = ({ product }) => {
                                 <IconArrowRight />
                             </Button>
                         </Link>
-                    
                 </div>
             </div>
         </div>
