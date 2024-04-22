@@ -1,114 +1,72 @@
 import { useEffect, useRef, useState } from 'react';
 import HeroImg from '../images/hero.jpg';
-import { ProductDto } from '../types/types';
+import image1 from '../images/1.jpg';
+import image2 from '../images/2.jpg';
+import image3 from '../images/3.jpg';
+import image4 from '../images/4.jpg';
+import image5 from '../images/5.jpg';
+import image6 from '../images/6.jpg';
+import image7 from '../images/7.jpg';
 
 
-const imagePaths = [
-    '../images/1.jpg',
-    '../images/2.jpg',
-    '../images/3.jpg',
-    '../images/4.jpg',
-    '../images/5.jpg',
-];
+const imagePaths = [image1, image2, image3, image4, image5, image6, image7];
 
 const Hero = () => {
-    const [isAnimated, setIsAnimated] = useState(false);
-    const [products, setProducts] = useState<ProductDto[]>([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState<'left' | 'right'>('left');
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch('https://fakestoreapi.com/products');
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products');
-                }
-
-                const data = await response.json();
-
-                setProducts(data);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
-    const heroRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleIntersect: IntersectionObserverCallback = (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setIsAnimated(true);
-                }
-            });
-        };
-
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5,
-        };
-
-        const observer = new IntersectionObserver(handleIntersect, options);
-
-        if (heroRef.current) {
-            observer.observe(heroRef.current);
-        }
-
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+    const [transitioning, setTransitioning] = useState(false); // Přidáme stav pro označení probíhajícího přechodu
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (direction === 'left') {
-                setCurrentIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
-            } else {
-                setCurrentIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
+            if (!isHovered) {
+                setTransitioning(true); // Při spuštění intervalu začneme s přechodem
+                setTimeout(() => {
+                    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+                    setTransitioning(false); // Po dokončení přechodu ukončíme přechod
+                }, 3000); // 1000 ms odpovídá délce přechodu definované v CSS
             }
-        }, 2000);
+        }, 5000);
 
         return () => clearInterval(interval);
-    }, [direction]);
+    }, [isHovered]);
 
-    useEffect(() => {
-        if (currentIndex === 4 && direction === 'left') {
-            setDirection('right');
-        } else if (currentIndex === 0 && direction === 'right') {
-            setDirection('left');
-        }
-    }, [currentIndex]);
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+    const heroRef = useRef<HTMLDivElement>(null)!;
 
     return (
         <section className='relative'>
-            <div ref={heroRef} className='w-full h-[800px] relative overflow-hidden'>
-                <img src={HeroImg} alt='Hero Image' className='absolute inset-0 w-full h-full object-cover' />
-                <div className='absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-center gap-5 mt-4'>
-                    {isAnimated && (
-                        imagePaths.map((path, index) => (
-                            <img
-                                key={index}
-                                src={path}
-                                alt={`Image ${index + 1}`}
-                                className={`
-                                    ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
-                                    transition-opacity duration-500 ease-in-out
-                                    absolute left-0 transform transition-transform
-                                    ${index !== currentIndex ? 'scale-0' : 'scale-100'}
-                                `}
-                                style={{ left: `${(index - currentIndex) * 100}%` }}
-                            />
-                        ))
-                    )}
-                </div>
+            <div
+                ref={heroRef}
+                className='w-full h-[500px] relative overflow-hidden flex justify-center items-center'
+                style={{
+                    backgroundImage: `url(${HeroImg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    perspective: '1000px',
+                    marginTop: '50px', // Odstup z vrchu
+                    marginBottom: '20px', // Odstup zespodu
+                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                {imagePaths.map((path, index) => (
+                    <img
+                        key={index}
+                        src={path}
+                        alt={`Image ${index}`}
+                        className={`absolute h-full w-[350px] object-cover transition-opacity duration-1000 ${
+                            index === currentImageIndex || transitioning ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    />
+                ))}
             </div>
-            {isAnimated && <div className='mt-16 flex flex-col items-center'></div>}
         </section>
     );
 };
