@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { ProductDto } from '../types/types';
 import { useQuery } from '@tanstack/react-query';
 import { Text, Button } from '@mantine/core';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
 
 const ProductDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -20,8 +20,9 @@ const ProductDetailsPage = () => {
             }
             return response.json() as Promise<ProductDto>;
         },
-        enabled: !!id, 
+        enabled: !!id,
     });
+
 
     useEffect(() => {
         if (data) {
@@ -55,7 +56,7 @@ const ProductDetailsPage = () => {
                         <Text style={{ marginBottom: '10px', fontSize: '16px', color: '#403D38' }}>
                             {description}
                         </Text>
-                        <div className='mt-4 lg:mt-10 lg:mb-auto'>
+                        <div className='flex space-x-4 md:flex-row md:space-x-4 md:items-center mt-4 lg:mt-10 lg:mb-auto'>
                             <Button
                                 variant='light'
                                 color='#eb5e28'
@@ -64,6 +65,14 @@ const ProductDetailsPage = () => {
                             >
                                 Add to cart
                                 <AiOutlineShoppingCart className='text-2xl' />
+                            </Button>
+                            <Button
+                                variant='light'
+                                color='#eb5e28'
+                                className='text-md'
+                            >
+                                <Link to="/">Back to home</Link>
+                                <AiOutlineHome className='text-2xl' />
                             </Button>
                         </div>
                     </div>

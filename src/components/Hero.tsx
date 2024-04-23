@@ -62,7 +62,7 @@ const Hero = () => {
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const { clientX, clientY } = event;
-        const { left, top, width, height } = heroRef.current.getBoundingClientRect();
+        const { left, top, width, height } = heroRef.current?.getBoundingClientRect() || { left: 0, top: 0, width: 0, height: 0 };
         const offsetX = clientX - left;
         const offsetY = clientY - top;
         const normalizedX = Math.min(Math.max(offsetX / width, 0), 1);
