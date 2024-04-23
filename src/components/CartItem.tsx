@@ -31,23 +31,23 @@ const CartItem: React.FC<{ item: CartItemType }> = ({ item }) => {
                                 variant='light'
                                 color='#252422'
                                 size='xs'
-                                className='mr-1'
-                                onClick={() => increaseAmount(id)}
+                                className='ml-1'
+                                onClick={() => decreaseAmount(id)}
                             >
-                                +
+                                -
                             </Button>
                             <div className='text-xs'>{amount}</div>
                             <Button
                                 variant='light'
                                 color='#252422'
                                 size='xs'
-                                className='ml-1'
-                                onClick={() => decreaseAmount(id)}
+                                className='mr-1'
+                                onClick={() => increaseAmount(id)}
                             >
-                                -
+                                +
                             </Button>
                         </div>
-                        </div>
+                    </div>
                     <div className='flex justify-between items-center mt-2'>
                         <div className='text-xs font-semibold text-gray-500'>{price.toFixed(2)}{`$`}</div>
                         <div className='text-xs font-bold text-gray-700'>{`${(price * amount).toFixed(2)}`}{` $`}</div>
