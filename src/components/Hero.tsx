@@ -112,6 +112,7 @@ const Hero = () => {
                             />
                         ))}
                     </div>
+                    <div className='w-1/3 h-px bg-[#eb5e28] mb-5'/>
                     <div className="w-1/3 h-full flex flex-wrap justify-center items-center">
                         {rightImages.map((image, index) => (
                             <img
