@@ -3,8 +3,15 @@ import { Link, useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { ProductDto } from '../types/types';
 import { useQuery } from '@tanstack/react-query';
-import { Text, Button } from '@mantine/core';
+import { Text, Button, Rating } from '@mantine/core';
 import { AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai';
+import Bg from '../images/bg.png';
+
+
+export interface Rating {
+    rate: number;
+    count: number;
+}
 
 const ProductDetailsPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -40,16 +47,25 @@ const ProductDetailsPage = () => {
 
     const { title, price, description, image } = product;
     return (
-        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center'>
-            <div className='container mx-auto'>
+        <section className='pt-32 pb-12 lg:py-32 h-screen flex items-center relative overflow-hidden'>
+            <div className='container mx-auto relative z-10'>
                 <div className='flex flex-col lg:flex-row items-center'>
                     <div className='flex flex-1 justify-center items-center mb-8 lg:mb-0'>
-                        <img className='max-w-[200px] lg:max-w-sm' src={image} alt='' />
+                        <div className='absolute top-30 left-30 w-full h-full z-5' />
+                        <div className='flex flex-1 justify-center items-center mb-8 lg:mb-0 ml-5 relative'>
+                            <img className='max-w-[200px] lg:max-w-sm' src={image} alt='' />
+                        </div>
                     </div>
                     <div className='flex-1 text-center lg:text-left'>
                         <Text className='font-bold uppercase mb-5 max-w-[600px] mz-auto' style={{ color: '#252422', fontSize: '30px' }}>
                             {title}
                         </Text>
+                        <Rating
+                            value={product.rating.rate}
+                            color="#eb5e28"
+                            style={{ marginTop: '2rem' }}
+                            readOnly
+                        />
                         <Text className='text-md font-bold mb-6' style={{ color: '#403D38', marginBottom: '30px' }}>
                             $ {price}
                         </Text>
@@ -78,6 +94,7 @@ const ProductDetailsPage = () => {
                     </div>
                 </div>
             </div>
+            <img className='absolute bottom-10 right-0' src={Bg} alt='' />
         </section>
     );
 };
